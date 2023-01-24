@@ -1,0 +1,89 @@
+include _include/sharedHTMLFunctions
+
+doctype html
+html
+  head
+    meta(name='viewport', content='width=device-width,initial-scale=1.0')
+    title= title
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js")
+    link(rel='stylesheet', href='/stylesheets/printStyle.css')
+  body
+    #page
+      .row
+        .row.float-left
+          a(href=`/customers/${customer._id}`)
+            img.logo(src="/images/logo.png" alt="company logo" width="200" height="120")
+          p.small= `${company.tagline}`
+        .row.company-info
+          p=company.address
+          p=company.website
+          p=company.email
+          p=company.contacts
+      .row.clear.above
+        .row.float-left.customer-info
+          h4.green-text Bill To: 
+          p= `${customer.name}`
+          p= `${customer.address}`
+          p= `0${customer.contact}`
+        .row.quote-dates.float-right 
+          h4.green-text Invoice 
+          p= `Invoice #: ACS${invoiceId}`
+          p  Date: 
+            +formatDate(invoiceDate)
+          p  Valid Until: 
+            +formatDate(invoiceDate)
+      .row.clear 
+      .row.clear
+        table 
+          tr 
+            th Product Name 
+            th Description 
+            th Quantity   
+            th Unit Price 
+            th Total 
+          each quoteItem in quotation.quoteItems 
+            tr 
+              td= quoteItem.product 
+              td= quoteItem.productDescription 
+              td= quoteItem.quantity 
+              td 
+                +formatMoney(quoteItem.productAmount) 
+              td
+                +formatMoney(quoteItem.subTotal) 
+          - for( var i = 0; i < 5; i++)
+            tr    
+            - for(var j = 0; j < 5; j++) 
+              td
+          tr
+            td
+            td
+            td
+            td.total Total 
+            td.total
+              +formatMoney(quotation.amount)
+      .row.company-banking.small 
+        h4.green-text Our Banking Details
+        p= `Bank: ${company.bank}`
+        p= `Account Name: ${company.name}` 
+        p= `Account No: ${company.branch}`
+        p= `Ref: ACS${quotation.saleId}` 
+    .row 
+      button.middle(onclick="printPDF('invoice')") Download PDF
+    script.
+      function printPDF(name) {
+      const element = document.getElementById("page");
+      window.scrollTo(0,0);
+      html2pdf(element, {
+        margin: 10,
+        filename: `${name}.pdf`,
+        html2canvas: {scale: 2, logging: true, dpi: 192, letterRendering: true},
+        jsPDF: {unit: 'mm', format: 'letter', orientation: 'portrait'}
+      }).save();
+      } 
+    script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js',integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo',crossorigin='anonymous')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js',integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49',crossorigin='anonymous')
+    script(src='/javascripts/bootstrap.min.js')
+  
+  
+
+

@@ -1,0 +1,67 @@
+extends layout
+
+include _include/sharedHTMLFunctions
+
+block content 
+  .row.banner 
+    .col-12 
+      h1= customer.name 
+  .row 
+    .col-12.col-md-6 
+      p.rating 
+        +outputRating(customer.rating)
+        p= customer.contact
+        p= customer.address
+      .card.card-primary
+        .card-block 
+        h2.card-title Last Service Dates 
+        p.card-text Quotation: #{customer.serviceDates.quotation} 
+        p.card-text Service: #{customer.serviceDates.service} 
+        p.card-text Invoice: #{customer.serviceDates.invoice} 
+      .card.card-primary 
+        .card-block 
+          h2.card-title Facilities
+          each facility in customer.facilities  
+            span.badge.badge-warning 
+              i.fa.fa-check 
+              |&nbsp; #{facility} 
+            |&nbsp;
+    .col-12.col-md-6.location-map
+      .card.card-primary
+        .card-block 
+          h2.card-title Location map
+          img.img-fluid.roundedrounded(src='/images/map.PNG' alt='map of location')
+  .row
+    .col-12
+      .card.card-primary.review-card 
+        .card-block 
+          a.btn.btn-primary.float-right(href=`/customers/${customer._id}/quotations/new`) Add Quotation 
+          h2.card-title Quotations
+          each quotation in customer.quotations 
+            .row.review 
+              .col-12.no-gutters.review-header 
+                small.reviewTimestamp 
+                  +formatDate(quotation.createdOn)
+              .col-12 
+                p= `Items: ${quotation.summary}`
+                p= `Total: R ${quotation.amount}`  
+                a.btn.btn-primary.float-right(href=`/customers/${customer._id}/quotations/${quotation._id}/invoice`) Invoice        
+                a.btn.btn-primary.float-right(href=`/customers/${customer._id}/quotations/${quotation._id}/del`) Delete    
+                a.btn.btn-primary.float-right(href=`/customers/${customer._id}/quotations/${quotation._id}/print`) Print         
+      .card.card-primary.review-card 
+        .card-block 
+          h2.card-title Invoices
+          each invoice in customer.invoices 
+            .row.review 
+              .col-12.no-gutters.review-header 
+                small.reviewTimestamp 
+                  +formatDate(invoice.createdOn)
+              .col-12 
+                p= `Items: ${invoice.summary}`
+                p= `Profit: R ${invoice.profit}`        
+                a.btn.btn-primary.float-right(href=`/customers/${customer._id}/invoices/${invoice._id}/del`) Delete         
+                a.btn.btn-primary.float-right(href=`/customers/${customer._id}/invoices/${invoice._id}/print`) Print              
+                a.btn.btn-primary.float-right(href=`/customers/${customer._id}/invoices/${invoice._id}/po`) PO              
+    .col-12.col-lg-3 
+      p.lead #{customer.name} #{sideBar.context}
+      p= sideBar.callToAction 

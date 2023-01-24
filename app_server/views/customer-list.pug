@@ -1,0 +1,29 @@
+extends layout 
+
+include _include/sharedHTMLFunctions
+
+block content 
+  .row.banner 
+    .col-12 
+      h1= pageHeader.title 
+        small &nbsp; #{pageHeader.strapline} 
+  .row 
+    .col-12.col-md-8 
+      a.float-right(href=`/customers/new/one`) Add Customer 
+  .row 
+    .col-12.col-md-8
+      each customer in customers
+        .card 
+          .card-block 
+          h4 
+            a(href=`/customers/${customer._id}`)= customer.name 
+            small &nbsp;
+             +outputRating(customer.rating)
+             a.float-right(href=`/customers/${customer._id}/del`) Delete
+            span.badge.badge-pill.badge-default.float-right= customer.distance
+          p.address= customer.address
+            .facilities
+              each facility in customer.facilities 
+                span.badge.badge-warning= facility
+    .col-12.col-md-4 
+      p.lead= sideBar

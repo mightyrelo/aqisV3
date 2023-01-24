@@ -1,0 +1,13 @@
+extends layout 
+
+block content 
+  .row.banner 
+    .col-12 
+      h1= pageHeader.title 
+        small &nbsp; #{pageHeader.strapline}
+  .row 
+    .col-12.col-md-8
+      img(src="/images/R3.gif", alt="service-guy", width="380")
+      h1.navbar-brand.large Welcome Aboard!   
+    .col-12.col-md-4 
+      p.lead= sideBar

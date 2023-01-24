@@ -1,0 +1,38 @@
+extends layout 
+
+include _include/sharedHTMLFunctions
+
+block content
+  .row.banner 
+    .col-12 
+      h1= pageHeader.title 
+        small &nbsp; #{pageHeader.strapline} 
+  .row 
+    .col-12.col-md-8 
+      form(action=`/products/new/one`, method="post", role="form")
+        -  if(error == 'val')
+             .alert.alert-danger(role="alert") All fields required, please try again.
+        .form-group.row 
+          label.col-10.col-sm-2.col-form-label(for="name") Name
+          .col-12.col-sm-5 
+            input#name.form-control(name="name")
+        .form-group.row 
+          label.col-10.col-sm-2.col-form-label(for="description") Description 
+          .col-12.col-sm-5 
+            textarea#rating.form-control.input-sm(name="description")
+        .form-group.row 
+          label.col-10.col-sm-2.col-form-label(for="retail")  Retail
+          .col-12.col-sm-5 
+            input#rating.form-control(name="retail")
+        .form-group.row 
+          label.col-10.col-sm-2.col-form-label(for="trade") Trade
+          .col-12.col-sm-5 
+            input#rating.form-control(name="trade")
+        .form-group.row 
+          label.col-10.col-sm-2.col-form-label(for="selling") Selling
+          .col-12.col-sm-5 
+            input#rating.form-control(name="selling")
+        .form-group.row 
+          .col-sm-10 
+            button.btn.btn-primary.float-left Create Product
+    .col-12.col-md-4 

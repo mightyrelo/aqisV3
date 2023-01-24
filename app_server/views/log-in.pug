@@ -1,0 +1,46 @@
+html
+  head
+    meta(name='viewport', content='width=device-width,initial-scale=1.0')
+    title= title
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/all.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    nav.navbar.fixed-top.navbar-expand-md.navbar-light
+      .container
+        a.navbar-brand(href='/') AQIS
+          button.navbar-toggler(type='button', data-toggle='collapse',data-target='#navbarMain')
+            span.navbar-toggler-icon
+      .container
+        #navbarMain.navbar-collapse.collapse
+          ul.navbar-nav.mr-auto
+            li.nav-item
+              a.nav-link(href='/about/') About
+          ul.navbar-nav.navbar-right
+            li.nav-item
+              a.nav-link(href='/register/') Register
+            li.nav-item
+              a.nav-link(href='/signout/') Sign out
+    .container.content 
+      .row.banner 
+        .col-12 
+          h1= pageHeader.title 
+            small &nbsp; #{pageHeader.strapline} 
+      .row 
+        .col-12.col-md-8 
+          form(action=`/sign`, method="post", role="form")
+            -  if(error == 'val')
+                 .alert.alert-danger(role="alert") All fields required, please try again.
+            .form-group.row 
+              label.col-10.col-sm-2.col-form-label(for="username") username
+              .col-12.col-sm-5 
+                input#name.form-control(name="username")
+            .form-group.row 
+              label.col-10.col-sm-2.col-form-label(for="password") password
+              .col-12.col-sm-5 
+                input#rating.form-control(name="password")
+            .form-group.row 
+              .col-sm-10 
+                button.btn.btn-primary.float-left Sign In
+    .col-12.col-md-4 
+

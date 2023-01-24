@@ -1,0 +1,45 @@
+extends layout
+include _include/sharedHTMLFunctions
+block content 
+  .row.banner 
+    .col-12 
+      h1= pageHeader.title
+        small &nbsp; #{pageHeader.strapline} 
+  .row 
+    .col-12.col-md-6 
+      p.rating 
+        +outputRating(product.rating)       
+      p= product.description
+      .card.card-primary
+        .card-block 
+        h2.card-title Pricing Date 
+        p.card-text Last Update: #{product.lastUpdate} 
+      .card.card-primary 
+        .card-block 
+          h2.card-title Pricing 
+          span.badge.badge-warning 
+            i.fa.fa-check 
+            |&nbsp; #{product.retail} 
+          |&nbsp;
+          span.badge.badge-warning 
+            i.fa.fa-check 
+            |&nbsp; #{product.trade} 
+          |&nbsp;
+          span.badge.badge-warning 
+            i.fa.fa-check 
+            |&nbsp; #{product.selling} 
+          |&nbsp;
+    .col-12.col-md-6.location-map
+      .card.card-primary
+        .card-block 
+          h2.card-title Product Image
+          img.img-fluid.roundedrounded(src='http://maps.googleapis.com/maps/api/..............staticmap?center=51.455041,-0.9690884&zoom=17&size=400x350&sensor=false&markers=51.455041,-0.9690884&scale=2&key=<API Key>')
+  .row
+    .col-12.col-md-6
+      .card.card-primary.review-card 
+        .card-block 
+          a.btn.btn-primary.float-left(href='/products/product/update') Update Product
+  .row
+    .col-12.col-lg-3
+      p.lead #{product.name} #{sideBar.content}
+      p #{sideBar.callToAction}

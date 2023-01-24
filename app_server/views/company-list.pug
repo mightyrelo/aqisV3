@@ -1,0 +1,27 @@
+extends layout 
+
+include _include/sharedHTMLFunctions
+
+block content 
+  .row.banner 
+    .col-12 
+      h1= pageHeader.title 
+        small &nbsp; #{pageHeader.strapline} 
+  .row 
+    .col-12.col-md-8 
+      a.float-right(href=`/companies/new`) Add Company 
+  .row 
+    .col-12.col-md-8
+      each company in companies
+        .card 
+          .card-block 
+          h4 
+            a(href=`/companies/${company._id}/select`)= company.name
+              small 
+                a.float-right(href=`/companies/${company._id}/del`) Delete
+          p.address= company.address
+          p.address= company.contacts
+          p.badge.padge-pill.badge-default= company.website
+          p.badge.badge-pill.badge-default= company.email
+    .col-12.col-md-4 
+      p.lead= sideBar

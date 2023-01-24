@@ -1,0 +1,34 @@
+extends layout 
+
+include _include/sharedHTMLFunctions
+
+block content
+  .row.banner 
+    .col-12 
+      h1= pageHeader.title 
+        small &nbsp; #{pageHeader.strapline} 
+  .row 
+    .col-12.col-md-8 
+      form(action=`/users`, method="post", role="form")
+        -  if(error == 'val')
+             .alert.alert-danger(role="alert") All fields required, please try again.
+        .form-group.row 
+          label.col-10.col-sm-2.col-form-label(for="username") Username
+          .col-12.col-sm-5 
+            input#name.form-control(name="username")
+        .form-group.row 
+          label.col-10.col-sm-2.col-form-label(for="alias")  Alias
+          .col-12.col-sm-5 
+            input#rating.form-control(name="alias")
+        .form-group.row 
+          label.col-10.col-sm-2.col-form-label(for="email") Email
+          .col-12.col-sm-5 
+            input#rating.form-control(name="email")
+        .form-group.row 
+          label.col-10.col-sm-2.col-form-label(for="password") Password
+          .col-12.col-sm-5 
+            input#rating.form-control(name="password")
+        .form-group.row 
+          .col-sm-10 
+            button.btn.btn-primary.float-left Create User
+    .col-12.col-md-4 

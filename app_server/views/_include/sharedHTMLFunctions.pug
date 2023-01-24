@@ -1,0 +1,30 @@
+mixin outputRating(rating)
+  - for (let i = 0; i < rating;i++)
+    i.fas.fa-star 
+  - for (let i = rating; i < 5; i++)
+    i.far.fa-star
+
+mixin outputRange(range)
+  - for (let i = 1; i <= range; i++)
+    option= i
+
+mixin outputProductList(products)
+  - for (let i = 0; i < products.length; i++)
+    option= products[i].name
+
+mixin formatDate(dateString)
+  - const date = new Date(dateString);
+  - const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  - const d = date.getDate();
+  - const m = monthNames[date.getMonth()];
+  - const y = date.getFullYear();
+  - const h = date.getHours();
+  - const min = date.getMinutes();
+  - const output = `${d} ${m} ${y} ${h}:${min}`;
+  =output
+
+mixin formatMoney(money)
+  - const formatter = new Intl.NumberFormat('en-ZA', {style: "currency", currency: "ZAR"})
+  - const output = formatter.format(money)
+  =output
+  

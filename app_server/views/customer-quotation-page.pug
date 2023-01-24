@@ -1,0 +1,33 @@
+extends layout 
+
+include _include/sharedHTMLFunctions
+
+block content 
+  .row.banner 
+    .col-12 
+      h1= pageHeader.title 
+  .row 
+    .col-12.col-md-8 
+      form(action=`/customers/${customer._id}/quotations/new`, method="post", role="form")
+        .form-group.row 
+          label.col-10.col-sm-2.col-form-label(for="product") Product
+          .col-12.col-sm-4 
+            select#name.form-control(name="product")
+              each product in products 
+                option= product.name
+        .form-group.row 
+          label.col-10.col-sm-2.col-form-label(for="quantity") Quantity 
+          .col-12.col-sm-2 
+            select#rating.form-control.input-sm(name="quantity")
+              +outputRange(50)
+        .form-group.row 
+          .col-sm-10 
+            button.btn.btn-primary.float-left Add to Quote
+      form(action=`/customers/${customer._id}/quotations/new`, method="get", role="form")
+        button.btn.btn-primary.float-left Quote
+      .col-12.col-sm-8
+      .form-group.row
+        .col-sm-10
+          form(action=`/customers/${customer._id}/quotations/done`, method="get", role="form")
+            button.btn.btn-primary.float-left Done
+    .col-12.col-md-4 

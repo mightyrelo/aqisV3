@@ -1,0 +1,49 @@
+extends layout 
+
+block content
+  .row.banner 
+    .col-12 
+      h1= pageHeader.title 
+        small &nbsp; #{pageHeader.strapline} 
+  .row 
+    .col-12.col-md-8 
+      form(action=`/company`, method="post", role="form")
+        -  if(error == 'val')
+             .alert.alert-danger(role="alert") All fields required, please try again.
+        .form-group.row 
+          label.col-10.col-sm-2.col-form-label(for="name") Name
+          .col-12.col-sm-5 
+            input#name.form-control(name="name")
+        .form-group.row 
+          label.col-10.col-sm-2.col-form-label(for="tagline") Tagline
+          .col-12.col-sm-5 
+            input#name.form-control(name="tagline")
+        .form-group.row 
+          label.col-10.col-sm-2.col-form-label(for="addresss") Address
+          .col-12.col-sm-5 
+            textarea#name.form-control(name="address")
+        .form-group.row 
+          label.col-10.col-sm-2.col-form-label(for="contacts") Contacts
+          .col-12.col-sm-5 
+            input#name.form-control(name="contacts")
+        .form-group.row 
+          label.col-10.col-sm-2.col-form-label(for="website") Website
+          .col-12.col-sm-5 
+            input#name.form-control(name="website")
+        .form-group.row 
+          label.col-10.col-sm-2.col-form-label(for="email") Email
+          .col-12.col-sm-5 
+            input#email.form-control(name="email")
+        .form-group.row 
+          label.col-10.col-sm-2.col-form-label(for="bank") Bank
+          .col-12.col-sm-5 
+            input#name.form-control(name="bank")
+        .form-group.row 
+          label.col-10.col-sm-2.col-form-label(for="branch") Account Num
+          .col-12.col-sm-5 
+            input#name.form-control(name="branch")
+        .form-group.row 
+          .col-sm-10 
+            button.btn.btn-primary.float-left Create Company
+    .col-12.col-md-4  
+  

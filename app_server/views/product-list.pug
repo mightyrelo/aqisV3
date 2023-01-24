@@ -1,0 +1,29 @@
+extends layout 
+include _include/sharedHTMLFunctions
+block content 
+  .row.banner 
+    .col-12 
+      h1= pageHeader.title 
+        small &nbsp; #{pageHeader.strapline} 
+  .row 
+    .col-12.col-md-8 
+      a.float-right(href=`/products/new/one`) Add Product 
+  .row 
+    .col-12.col-md-8
+      .error= message
+      each product in products
+        .card 
+          .card-block 
+          h4 
+            a(href=`/products/${product._id}`)= product.name 
+            small &nbsp;
+              +outputRating(product.rating)
+              a.float-right(href=`/products/${product._id}/del`) Delete
+            span.badge.badge-pill.badge-default.float-right= product.inStock
+          p.address=product.description
+            .facilities 
+              span.badge.badge-warning= product.retail
+              span.badge.badge-warning= product.trade
+              span.badge.badge-warning= product.selling
+            .col-12.col-md-4 
+      p.lead= sideBar

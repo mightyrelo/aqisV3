@@ -1,0 +1,9 @@
+{"_id":{"$oid":"633020b7468de81c7542e41f"},"name":"D5Evo","description":"500kg Sliding gate motor with 12V Battery, 2x Remotes, 4m Rack, Motor Kit","retail":5000,"trade":4000,"selling":4500,"inStock":12}
+{"_id":{"$oid":"633020ee468de81c7542e420"},"name":"D2Turbo","description":"250kg Sliding gate motor with 12V Battery, 2x Remotes, 4m Rack, Motor Kit","retail":4000,"trade":3000,"selling":3500,"inStock":2}
+{"_id":{"$oid":"63302118468de81c7542e421"},"name":"Vantage Double 500","description":"250kg Sliding gate motor with 12V Battery, 2x Remotes, 4m Rack, Motor Kit","retail":14000,"trade":12000,"selling":10500,"inStock":2}
+{"_id":{"$oid":"6331c7470e5ebd0f83a7509f"},"__v":0,"description":"This is my own personal product","name":"Katlego Product","retail":10,"trade":8}
+{"_id":{"$oid":"6336ef2e8fc0ded3f5d4dee9"},"name":"Bright Idea","description":"some random description","retail":6000,"trade":3500,"selling":5000,"__v":0}
+{"_id":{"$oid":"633d9c433a8ab80df42015b2"},"name":"test profit","description":"this product is created to test the logic of calculating profit","retail":1,"trade":"2","selling":"3","__v":0}
+{"_id":{"$oid":"633dd13cf6c5deb04e717741"},"name":"Another Product","description":"This is a random product that I plan to sell","retail":4000,"trade":"2500","selling":"3800","__v":0}
+{"_id":{"$oid":"63510ae8ce5b467ff7a9b275"},"name":"Latest Product","description":"This is the latest product on th base","retail":4500,"trade":"2300","selling":"3000","__v":0}
+{"_id":{"$oid":"63518b60eb47e80cc3079869"},"name":"My Product","description":"This is a new product that I just made available on my database","retail":3332,"trade":"1244","selling":"2030","__v":0}
