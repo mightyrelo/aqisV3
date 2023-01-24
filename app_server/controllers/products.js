@@ -56,7 +56,7 @@ const productList = (req, res)=> {
         if(statusCode === 200 && products.length) {
             renderProductList(req, res, products);
         } else {
-            showError(req, res, response.statusCode);
+            showError(req, res, statusCode);
         }
     });
 };
