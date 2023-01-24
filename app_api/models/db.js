@@ -4,7 +4,7 @@ require('./products');
 
 let dbURI = 'mongodb://localhost/aqis';
 if(process.env.NODE_ENV === 'production') {
-    dbURI = 'mongodb+srv://accsight:K%40stx8909@cluster0.hvixj0e.mongodb.net/AAQIS';
+    dbURI = 'mongodb+srv://accsight:K%40stx8909@cluster0.hvixj0e.mongodb.net/aqisv3';
 }
 mongoose.connect(dbURI, {useNewUrlParser: true});
 
